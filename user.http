@@ -1,0 +1,21 @@
+### GET request to example server
+GET https://examples.http-client.intellij.net/get
+    ?generated-in=IntelliJ IDEA
+
+###
+POST http://localhost:8080/user
+Content-Type: application/json
+
+{
+  "name": "Rodolfo",
+  "email": "rodolfo@teste.com",
+  "documento": "1231231546",
+  "endereco": {
+    "rua": "Nove",
+    "bairro": "Azul",
+    "numero": 874,
+    "cep": "12547-789",
+    "cidade": "SJC",
+    "complemento": "casa"
+  }
+}
