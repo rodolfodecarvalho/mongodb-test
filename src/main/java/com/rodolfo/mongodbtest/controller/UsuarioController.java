@@ -4,7 +4,7 @@ import com.rodolfo.mongodbtest.dto.UsuarioRequestDTO;
 import com.rodolfo.mongodbtest.dto.UsuarioResponseDTO;
 import com.rodolfo.mongodbtest.service.UsuarioService;
 import jakarta.validation.Valid;
-import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Email;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +23,12 @@ public class UsuarioController {
 
 
     @GetMapping()
-    public ResponseEntity<UsuarioResponseDTO> getByEmail(@RequestParam("email") String email) {
+    public ResponseEntity<UsuarioResponseDTO> getByEmail(@RequestParam("email") @Email(message = "Email inválido") String email) {
         return ResponseEntity.ok(usuarioService.getByEmail(email));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deleteUsuario(@Valid @RequestParam("email") @NotBlank String email) {
+    public ResponseEntity<Void> deleteUsuario(@RequestParam("email") @Email(message = "Email inválido") String email) {
         usuarioService.deleteUsuarioByEmail(email);
         return ResponseEntity.noContent().build();
     }

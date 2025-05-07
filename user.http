@@ -2,7 +2,7 @@ POST http://localhost:8080/user
 Content-Type: application/json
 
 {
-  "nome": "",
+  "nome": "Rodolfo",
   "email": "rodolfo@teste.com",
   "documento": "256318231548",
   "endereco": {
