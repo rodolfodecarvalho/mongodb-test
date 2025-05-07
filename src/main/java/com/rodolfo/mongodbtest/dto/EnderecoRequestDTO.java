@@ -1,6 +1,7 @@
 package com.rodolfo.mongodbtest.dto;
 
 import com.rodolfo.mongodbtest.entity.EnderecoEntity;
+import org.bson.types.ObjectId;
 
 public record EnderecoRequestDTO(
         String rua,
@@ -15,7 +16,7 @@ public record EnderecoRequestDTO(
 
         String cep) {
 
-    public static EnderecoEntity toEnderecoEntity(EnderecoRequestDTO enderecoDTO, String usuarioId) {
+    public static EnderecoEntity toEnderecoEntity(EnderecoRequestDTO enderecoDTO, ObjectId usuarioId) {
         return EnderecoEntity.builder()
                 .rua(enderecoDTO.rua())
                 .bairro(enderecoDTO.bairro())

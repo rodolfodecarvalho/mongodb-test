@@ -3,6 +3,8 @@ package com.rodolfo.mongodbtest.controller;
 import com.rodolfo.mongodbtest.dto.UsuarioRequestDTO;
 import com.rodolfo.mongodbtest.dto.UsuarioResponseDTO;
 import com.rodolfo.mongodbtest.service.UsuarioService;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,19 +17,19 @@ public class UsuarioController {
     private final UsuarioService usuarioService;
 
     @PostMapping()
-    public ResponseEntity<UsuarioResponseDTO> gravaDadosUsuario(@RequestBody UsuarioRequestDTO usuarioRequestDTO) {
-        return ResponseEntity.ok(usuarioService.gravarUsuarios(usuarioRequestDTO));
+    public ResponseEntity<UsuarioResponseDTO> save(@Valid @RequestBody UsuarioRequestDTO usuarioRequestDTO) {
+        return ResponseEntity.ok(usuarioService.save(usuarioRequestDTO));
     }
 
 
     @GetMapping()
-    public ResponseEntity<UsuarioResponseDTO> buscaUsuarioPorEmail(@RequestParam("email") String email) {
-        return ResponseEntity.ok(usuarioService.buscaDadosUsuario(email));
+    public ResponseEntity<UsuarioResponseDTO> getByEmail(@RequestParam("email") String email) {
+        return ResponseEntity.ok(usuarioService.getByEmail(email));
     }
 
     @DeleteMapping
-    public ResponseEntity<Void> deletaDadosUsuario(@RequestParam("email") String email) {
-        usuarioService.deletaDadosUsuario(email);
-        return ResponseEntity.accepted().build();
+    public ResponseEntity<Void> deleteUsuario(@Valid @RequestParam("email") @NotBlank String email) {
+        usuarioService.deleteUsuarioByEmail(email);
+        return ResponseEntity.noContent().build();
     }
 }

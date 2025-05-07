@@ -1,13 +1,12 @@
 package com.rodolfo.mongodbtest.repository;
 
 import com.rodolfo.mongodbtest.entity.UsuarioEntity;
+import org.bson.types.ObjectId;
 import org.springframework.data.mongodb.repository.MongoRepository;
-import org.springframework.transaction.annotation.Transactional;
 
-public interface UsuarioRepository extends MongoRepository<UsuarioEntity, String> {
+import java.util.Optional;
 
-    UsuarioEntity findByEmail(String email);
+public interface UsuarioRepository extends MongoRepository<UsuarioEntity, ObjectId> {
 
-    @Transactional
-    void deleteByEmail(String email);
+    Optional<UsuarioEntity> findFirstByEmail(String email);
 }

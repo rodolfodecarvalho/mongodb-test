@@ -12,5 +12,4 @@ public record EnderecoResponseDTO(
         String cidade,
 
         String cep) {
-
 }

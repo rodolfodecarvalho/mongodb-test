@@ -2,12 +2,12 @@ package com.rodolfo.mongodbtest.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.rodolfo.mongodbtest.entity.UsuarioEntity;
+import jakarta.validation.constraints.NotBlank;
 
 import java.time.LocalDateTime;
-import java.util.UUID;
 
 public record UsuarioRequestDTO(
-        String nome,
+        @NotBlank(message = "id must not be null") String nome,
 
         @JsonProperty(required = true)
         String email,
@@ -18,12 +18,10 @@ public record UsuarioRequestDTO(
 
     public static UsuarioEntity toUsuarioEntity(UsuarioRequestDTO usuarioDTO) {
         return UsuarioEntity.builder()
-                .id(UUID.randomUUID().toString())
                 .nome(usuarioDTO.nome())
                 .documento(usuarioDTO.documento())
                 .email(usuarioDTO.email())
                 .dataCadastro(LocalDateTime.now())
                 .build();
-
     }
 }

@@ -1,17 +1,12 @@
-### GET request to example server
-GET https://examples.http-client.intellij.net/get
-    ?generated-in=IntelliJ IDEA
-
-###
 POST http://localhost:8080/user
 Content-Type: application/json
 
 {
-  "name": "Rodolfo",
+  "nome": "",
   "email": "rodolfo@teste.com",
-  "documento": "1231231546",
+  "documento": "256318231548",
   "endereco": {
-    "rua": "Nove",
+    "rua": "Dez",
     "bairro": "Azul",
     "numero": 874,
     "cep": "12547-789",
@@ -19,3 +14,12 @@ Content-Type: application/json
     "complemento": "casa"
   }
 }
+
+####
+
+GET http://localhost:8080/user?email=rodolfo@teste.com
+Content-Type: application/json
+
+###
+DELETE http://localhost:8080/user?email=rodolfo@teste.com
+Content-Type: application/json

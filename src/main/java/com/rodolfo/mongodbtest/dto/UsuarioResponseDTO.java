@@ -2,9 +2,10 @@ package com.rodolfo.mongodbtest.dto;
 
 import com.rodolfo.mongodbtest.entity.EnderecoEntity;
 import com.rodolfo.mongodbtest.entity.UsuarioEntity;
+import org.bson.types.ObjectId;
 
 public record UsuarioResponseDTO(
-        String id,
+        ObjectId id,
 
         String nome,
 
